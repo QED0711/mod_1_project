@@ -15,6 +15,8 @@ DF
 
 # Joey
 
+Formula to use for VORM comes from this [Burritos article](https://fivethirtyeight.com/features/in-search-of-americas-best-burrito/). Too long; don't read all of it. Just check out "Step 1: Data Mining" and its footnotes.
+
 ## how does one measure a succesful movie (VORM)
   - 
   
