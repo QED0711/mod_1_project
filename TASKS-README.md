@@ -10,5 +10,14 @@
 
 ## how does one measure a succesful movie (VORM)
   - 
+  
+  
+  
+  
+  - DF
+    - Movies name/id (JOIN)
+    - imdb rating (average)
+    - total num reviews
+    - year released 
 
 
