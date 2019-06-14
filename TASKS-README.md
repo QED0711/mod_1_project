@@ -4,7 +4,14 @@
   - find movies with some tech angle (3d, what others) and see how they trend
     - what kinds of categories of tech movies are there (GRAPH)
     - see how tech movies relate to ROI (GRAPH)
+    - see how num of tech movies have grown in the last few years (GRAPH)
   - if more time: see about foreign films and actors (BRANDING)
+
+DF
+
+  - movie title/id
+  - gross (domestic and international)
+  - year (for graph of rise of tech movies over time)
 
 # Joey
 
