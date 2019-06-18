@@ -53,3 +53,48 @@ def subgenre_counter(subgenres, df):
                     genre_dict[subgenre] = 1
     return genre_dict
 
+
+
+def prepare_data_for_roi_analysis():
+    
+    # import dataframes
+    basics_df = pd.read_csv('data/imdb.title.basics.csv.gz')
+    ratings_df = pd.read_csv('data/imdb.title.ratings.csv.gz')
+    budgets_df = pd.read_csv('data/tn.movie_budgets.csv.gz')
+
+    # 1st merge
+    basics_ratings = pd.merge(basics_df, ratings_df, how='left', on='tconst') 
+
+    # limit rows to ones that contain averagerating
+    first_pct = str(1 - basics_ratings[basics_ratings.averagerating.isnull()].shape[0] / basics_ratings.shape[0])
+    basics_ratings = basics_ratings[basics_ratings.averagerating.isnull() == False]
+
+    # 2nd merge
+    basics_ratings_budgets = pd.merge(basics_ratings, budgets_df, how='left', left_on='primary_title', right_on='movie')
+
+    # limit rows to ones that contain production_budget
+    second_pct = str(1 - basics_ratings_budgets[basics_ratings_budgets.production_budget.isnull()].shape[0] / basics_ratings_budgets.shape[0])
+    basics_ratings_budgets = basics_ratings_budgets[basics_ratings_budgets.production_budget.isnull() == False]
+
+    # print some info 
+    print('Percent of rows left after first merge:', first_pct)
+    print('Percent of rows left after second merge:', second_pct)
+    
+    return basics_ratings_budgets
+
+
+def clean_data_prepare_features(df):
+    
+    # subset columns
+    df = df[['primary_title','start_year','runtime_minutes','genres','averagerating','numvotes','production_budget','domestic_gross','worldwide_gross']].copy()
+    
+    # clean columns and convert to ints
+    df.production_budget = df.production_budget.str.replace(',','').str.strip('$').astype(int)
+    df.domestic_gross = df.domestic_gross.str.replace(',','').str.strip('$').astype(int)
+    df.worldwide_gross = df.worldwide_gross.str.replace(',','').str.strip('$').apply(lambda x: int(x))
+    
+    # generate new features
+    df['net_revenue'] = (df.worldwide_gross - df.production_budget) / 1000000
+    df['log_numvotes'] = np.log(df.numvotes)
+    df['scaled_rating'] = df.log_numvotes * df.averagerating / 127
+    return df
