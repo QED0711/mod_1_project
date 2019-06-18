@@ -6,6 +6,8 @@
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 # ## get_subgenres
@@ -98,3 +100,82 @@ def clean_data_prepare_features(df):
     df['log_numvotes'] = np.log(df.numvotes)
     df['scaled_rating'] = df.log_numvotes * df.averagerating / 127
     return df
+
+
+
+def plot_genre_comparison(performant_genres, top_subgenres_df):
+    """
+    plots two charts:
+    1. the top performant genres as listed in the dataset
+    2. the subgenres extracted from those top 10 performant genres
+    """
+    plt.figure(figsize=(20, 5))
+    
+    ax1 = plt.subplot(121)
+    ax2 = plt.subplot(122)
+
+    g1 = sns.barplot(data=performant_genres, y=performant_genres.index, x='total_gross', orient='h', ax=ax1, color="#E67E17")
+    g1.set_title("Top Performant Genres by Total Gross", fontsize=24, color="#E67E17")
+    g1.set_xlabel("Total Gross (billions)", fontsize=20, color="#E67E17")
+    g1.set_ylabel('Genres', fontsize=20, color="#E67E17")
+        
+    g2 = sns.barplot(data=top_subgenres_df, x="Count", y='Genre', ax=ax2, color="#366DA2")
+    g2.set_title("Subgenre Counts in Top 10 Genres", fontsize=24, color="#366DA2")
+    g2.set_xlabel("Count (in top 10)", fontsize=20,color="#366DA2")
+    g2.set_ylabel("Subgenres", fontsize=20, color="#366DA2")
+    
+    plt.subplots_adjust(wspace=0.2)
+    plt.show()
+
+
+def plot_top_visually_enhanced_movies(top_visually_enhanced):
+    """
+    Shows the top 10 movies with some visually enhanced element (3D, IMAX) 
+    ordered by total_gross revenue
+    """
+    sns.barplot(data=top_visually_enhanced, x='total_gross', y=top_visually_enhanced.index)
+    plt.ylabel("Movie")
+    plt.xlabel("Total Gross (billions)")
+    plt.title("Top 10 Grossing Movies with Enhanced Visual Element")
+    plt.show()
+
+
+def plot_enhanced_attributes(enhanced_attributes):
+    """
+    plots total gross revenue of films grouped by their attribute enhancements 
+    """
+    sns.barplot(data=enhanced_attributes, x='total_gross', y=enhanced_attributes.index)
+    plt.xticks(rotation=0.5)
+    plt.title("Total Gross of Enhanced Films", fontsize=24, color="#366DA2")
+    plt.xlabel("Total Gross (billions)", fontsize=20, color="#366DA2")
+    plt.ylabel("Enhancement", fontsize=20, color="#366DA2")
+    plt.show()
+
+def plot_3d_trend(three_d):
+    """
+    Plots the focus on 3D films over an 8 year period from 2010-2018 
+    """
+    sns.lineplot(data=three_d.reset_index(), x='year', y='gross_by_num_films')
+    plt.title("Average gross per 3D Film per Year", fontsize=20, color="#366DA2")
+    plt.xlabel("Year", fontsize=20, color="#366DA2")
+    plt.ylabel("Average Gross Revenue (billions)", fontsize=15, color="#366DA2")
+    plt.show()
+
+def plot_visually_enhanced_revenue_distribution(split_3d, imax, final_df):
+    """
+    plots the distribution of gross revenue for 3D, IMAX, and Standard definition films.
+    """
+
+    f = plt.figure(figsize=(18, 6))
+
+    sns.distplot(a=split_3d.groupby('primary_title').sum().total_gross, bins=50, hist=True, hist_kws=dict(alpha=1), kde_kws=dict(alpha=0))
+    sns.distplot(a=imax.total_gross, bins=50, kde=False, hist_kws=dict(alpha=0.5), kde_kws=dict(alpha=0))
+    sns.distplot(a=final_df.total_gross, bins=50, hist_kws=dict(alpha=0.25), kde_kws=dict(alpha=0))
+    
+    plt.legend(['3D', 'IMAX', "Standard"], fontsize=30)
+
+    plt.xlabel("Total Gross (billions)", fontsize=30)
+    plt.ylabel('Count', fontsize=30)
+    plt.title("Distribution of Gross Revenue by Visual Enhancement", fontsize=30)
+    plt.xlim([0, 1.5])
+    plt.show()
