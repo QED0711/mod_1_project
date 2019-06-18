@@ -196,3 +196,44 @@ def plot_visually_enhanced_revenue_distribution(split_3d, imax, final_df):
     plt.title("Distribution of Gross Revenue by Visual Enhancement", fontsize=30)
     plt.xlim([0, 1.5])
     plt.show()
+
+def plot_popularity_vs_roi(df):
+    """
+    Plots each movie's net revenue versus its rating, scaled for movies with more votes
+    """
+    plt.style.use('fivethirtyeight')
+
+    fig = plt.figure(figsize=(8,6))
+    ax = fig.add_subplot(111)
+
+    # subset data for conditional coloring
+    top_left = df[(df.net_revenue > 2000)]
+    top_right = df[(df.net_revenue > 1000) & (df.scaled_rating > 0.8)]
+    far_right = df[(df.net_revenue > 500) & (df.scaled_rating > 0.9)]
+    bottom = df[(df.net_revenue < -200)]
+
+    # plot grey points
+    ax.scatter(df.scaled_rating, df.net_revenue, alpha=0.1, color='grey')
+
+    # plot colored points
+    ax.scatter(top_left['scaled_rating'], top_left['net_revenue'], color='indigo', alpha=0.5)
+    ax.scatter(top_right['scaled_rating'], top_right['net_revenue'], color='darkblue', alpha=0.5)
+    ax.scatter(far_right['scaled_rating'], far_right['net_revenue'], color='darkgreen', alpha=0.5)
+    ax.scatter(bottom['scaled_rating'], bottom['net_revenue'], color='crimson', alpha=0.5)
+
+    # loop through movies to color, adding labels
+    for i, row in top_left.iterrows():
+        plt.text(row.scaled_rating+.04, row.net_revenue-30, row.primary_title, color='indigo', size=20)
+    for i, row in top_right.iterrows():
+        plt.text(row.scaled_rating+.04, row.net_revenue-30, row.primary_title, color='darkblue', size=20)
+    for i, row in far_right.iterrows():
+        plt.text(row.scaled_rating+.04, row.net_revenue-30, row.primary_title, color='darkgreen', size=20)
+    for i, row in bottom.iterrows():
+        plt.text(row.scaled_rating+.04, row.net_revenue-30, row.primary_title, color='crimson', size=20)
+
+    # format axes
+    ax.set_title('\n Movie Popularity vs. Profit \n', size=30)
+    ax.set_xlabel('\n Scaled Rating \n', size=20)
+    ax.set_ylabel('\n Net Revenue ($ millions) \n', size=20)
+    ax.set_ylim(-490, 2400)
+    plt.show()
