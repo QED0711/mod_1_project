@@ -58,6 +58,15 @@ def subgenre_counter(subgenres, df):
 
 
 def prepare_data_for_roi_analysis():
+    """
+    Takes in no positional arguments.
+    Reads in 3 movie dataframes:
+        1. IMDB titles CSV
+        2. IMDB ratings CSV
+        3. TheNumbers.com movie budgets CSV
+    Merges the three dataframes together.
+    Prints out some info about the merges it performs.
+    """
     
     # import dataframes
     basics_df = pd.read_csv('data/imdb.title.basics.csv.gz')
@@ -81,12 +90,20 @@ def prepare_data_for_roi_analysis():
     # print some info 
     print('Percent of rows left after first merge:', first_pct)
     print('Percent of rows left after second merge:', second_pct)
-    
+
     return basics_ratings_budgets
 
 
 def clean_data_prepare_features(df):
-    
+    """
+    Takes 1 positional argument, a dataframe (intended to be a movie dataframe containing ratings and budget info).
+    Subsets the dataframe by the columns of interest.
+    Cleans columns (converting budget figures from strings to ints).
+    Generates 3 new columns:
+        1. net_revenue (equal to worldwide_gross - production_budget)
+        2. log_numvotes (equal to the natural log of numvotes)
+        3. scaled_rating (equal to log_numvotes * averagerating, scaled to be between 0 and 1)
+    """
     # subset columns
     df = df[['primary_title','start_year','runtime_minutes','genres','averagerating','numvotes','production_budget','domestic_gross','worldwide_gross']].copy()
     
