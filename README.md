@@ -10,7 +10,7 @@ There are two portions to our analysis:
 
 #### 1. The effect of genre and visual enhancements on gross revenue (Quinn)
 
-We explore these two categorical features in our datasets. First, we make recommendations for how a hypothetical Microsoft Film Studios should direct funds based on popular genres. Second, we analyze the popularity and earning power of visually enhanced films within he last eight years, and suggest how Microsoft could use their proprietary media and interactive hardware can create unique content in the video streaming product space.
+We explore these two categorical features in our datasets. First, we make recommendations for how a hypothetical Microsoft Film Studios should direct funds based on popular genres. Second, we analyze the popularity and earning power of visually enhanced films within the last eight years, and suggest how Microsoft could use their proprietary media and interactive hardware to create unique content in the video streaming product space.
 
 #### 2. Rating and popularity vs. profit (Joey)
 
@@ -24,4 +24,4 @@ We normalize the raw user ratings by the number of total reviews a movie receive
 - [`readmes/`](https://github.com/QED0711/mod_1_project/tree/master/readmes): Documentation and project description. 
 - [`exploration/`](https://github.com/QED0711/mod_1_project/tree/master/exploration): Folder containing early EDA work.
 
-##### Final slides from our presentation can be found [here](https://docs.google.com/presentation/d/1GSvVB9qBfhOZxeVlyIOpBuVpbENry7TLNLvQVx4VYU8/edit?usp=sharing){:target="_blank"}.
+##### Final slides from our presentation can be found <a href="https://docs.google.com/presentation/d/1GSvVB9qBfhOZxeVlyIOpBuVpbENry7TLNLvQVx4VYU8/edit?usp=sharing" target="_blank">here</a>
