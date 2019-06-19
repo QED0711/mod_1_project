@@ -8,11 +8,11 @@ We were tasked with analyzing data on the movie industry to scope out potential 
 
 There are two portions to our analysis:
 
-##### 1. The effect of genre and visual enhancements on gross revenue (Quinn)
+#### 1. The effect of genre and visual enhancements on gross revenue (Quinn)
 
 We explore these two categorical features in our datasets. First, we make recommendations for how a hypothetical Microsoft Film Studios should direct funds based on popular genres. Second, we analyze the popularity and earning power of visually enhanced films within he last eight years, and suggest how Microsoft could use their proprietary media and interactive hardware can create unique content in the video streaming product space.
 
-##### 2. Rating and popularity vs. profit (Joey)
+#### 2. Rating and popularity vs. profit (Joey)
 
 We normalize the raw user ratings by the number of total reviews a movie received. Using this data, we designate certain clusters of films that perform well with respect to popularity, net revenue, or both. Based on these findings, we suggest possible films that Microsoft could use as models to increase user popularity and profit.
 
