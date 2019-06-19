@@ -19,7 +19,7 @@ We normalize the raw user ratings by the number of total reviews a movie receive
 ### Overview of this Repo
 
 - [`movie_analysis.ipynb`](https://github.com/QED0711/mod_1_project/blob/master/movie_analysis.ipynb): Our main notebook that describes our analyses.
-- [`helpers.py`](https://github.com/QED0711/mod_1_project/blob/master/helpers.py): File containing helper functions that we call in `movie_analysis`.
+- [`helpers.py`](https://github.com/QED0711/mod_1_project/blob/master/helpers.py): File containing helper functions that we call in `movie_analysis.ipynb`.
 - [`data/`](https://github.com/QED0711/mod_1_project/tree/master/data): Data used in our analyses.
 - [`readmes/`](https://github.com/QED0711/mod_1_project/tree/master/readmes): Documentation and project description. 
 - [`exploration/`](https://github.com/QED0711/mod_1_project/tree/master/exploration): Folder containing early EDA work.
