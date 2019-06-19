@@ -151,9 +151,9 @@ def plot_top_visually_enhanced_movies(top_visually_enhanced):
     ordered by total_gross revenue
     """
     sns.barplot(data=top_visually_enhanced, x='total_gross', y=top_visually_enhanced.index)
-    plt.ylabel("Movie")
-    plt.xlabel("Total Gross (billions)")
-    plt.title("Top 10 Grossing Movies with Enhanced Visual Element")
+    plt.ylabel("Movie", fontsize=20)
+    plt.xlabel("Total Gross (billions)", fontsize=20)
+    plt.title("Top 10 Grossing Movies with Enhanced Visual Element", fontsize=16)
     plt.show()
 
 
