@@ -24,4 +24,4 @@ We normalize the raw user ratings by the number of total reviews a movie receive
 - [`readmes/`](https://github.com/QED0711/mod_1_project/tree/master/readmes): Documentation and project description. 
 - [`exploration/`](https://github.com/QED0711/mod_1_project/tree/master/exploration): Folder containing early EDA work.
 
-##### Final slides from our presentation can be found [here](https://docs.google.com/presentation/d/1GSvVB9qBfhOZxeVlyIOpBuVpbENry7TLNLvQVx4VYU8/edit?usp=sharing).
+##### Final slides from our presentation can be found [here](https://docs.google.com/presentation/d/1GSvVB9qBfhOZxeVlyIOpBuVpbENry7TLNLvQVx4VYU8/edit?usp=sharing){:target="_blank"}.
