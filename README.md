@@ -26,3 +26,4 @@ We normalize the raw user ratings by the number of total reviews a movie receive
 
 ##### Final slides from our presentation can be found [here](https://docs.google.com/presentation/d/1GSvVB9qBfhOZxeVlyIOpBuVpbENry7TLNLvQVx4VYU8/edit?usp=sharing)
 
+##### PDF version of presentation available [here](https://github.com/QED0711/mod_1_project/blob/master/presentation_deck.pdf)
