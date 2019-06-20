@@ -196,6 +196,27 @@ def plot_visually_enhanced_revenue_distribution(split_3d, imax, final_df):
     plt.title("Distribution of Gross Revenue by Visual Enhancement", fontsize=30)
     plt.xlim([0, 1.5])
     plt.show()
+    
+def alternate_kde_enhanced_v_revenue(final_df, imax, split_3d):
+    """
+    ALTERNATIVE KDE plot - plots the KDE of gross revenue for 3D, IMAX, and Standard definition films.
+    """
+    no_visual_enhancement = final_df[(final_df.attributes != '3-D version') | (final_df.attributes != 'IMAX version')]
+
+    plt.figure(figsize=(18, 6))
+    plt.xlim([0, 1.5])
+    plt.ylim([0, 5])
+
+    sns.kdeplot(data=no_visual_enhancement.total_gross, shade=True, gridsize=100, bw=0.05, color="#3A923A")
+    sns.kdeplot(data=imax.total_gross, shade=True, gridsize=100, bw=0.05, color='#E1812C')
+    sns.kdeplot(data=split_3d.total_gross, shade=True, gridsize=100, bw=0.05, color="#3274A1")
+
+    plt.xlabel("Total Gross (billions)", size=20)
+    plt.ylabel("Density Estimation", size=20)
+    plt.title("KDE - Total Gross by Visual Enhancement", size=20)
+    plt.legend(["Standard", "IMAX", "3D"], fontsize=20)
+    
+    plt.show()
 
 def plot_popularity_vs_roi(df):
     """
